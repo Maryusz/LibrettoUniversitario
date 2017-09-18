@@ -1,4 +1,4 @@
-package sample;
+package com.libretto;
 
 public class LibrettoController {
 }
