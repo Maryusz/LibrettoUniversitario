@@ -1,5 +1,6 @@
 package com.libretto;
 
+import com.libretto.models.Model;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,9 +11,19 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Libretto.fxml"));
+
+        // Carica il node radice dal FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Libretto.fxml"));
+        Parent root = loader.load();
+
+        // carica il loader con il quale si possono accedere i metodi del controller
+        LibrettoController controller = loader.getController();
+
+        Model model = new Model();
+        controller.setModel(model);
+
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 
