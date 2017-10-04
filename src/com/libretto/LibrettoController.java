@@ -59,8 +59,8 @@ public class LibrettoController {
             return;
         } else {
             txtCodice.setText(e.getCodice());
+            txtTitolo.setText(e.getTitolo());
             txtDocente.setText(e.getDocente());
-            txtTitolo.setText(e.getDocente());
         }
 
     }

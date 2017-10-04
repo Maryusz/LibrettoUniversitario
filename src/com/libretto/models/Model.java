@@ -1,6 +1,8 @@
 package com.libretto.models;
 
 
+import com.libretto.models.db.EsameDAO;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,12 +21,9 @@ public class Model {
      * @return true se viene inserito, false se esiste già nella lista e non può essere inserito
      */
     public boolean addEsame(Esame e) {
-        if (!esami.contains(e)) {
-            esami.add(e);
-            return true;
-        } else {
-            return false;
-        }
+        EsameDAO dao = new EsameDAO();
+
+        return dao.create(e);
     }
 
     /**
@@ -34,12 +33,9 @@ public class Model {
      * @return se l'esame non viene trovato, il metodo restituisce null.
      */
     public Esame searchEsame(String codice) {
-        int index = this.esami.indexOf(new Esame(codice, null, null));
-        if (index == -1) {
-            return null;
-        } else {
-            return this.esami.get(index);
-        }
+        EsameDAO dao = new EsameDAO();
+        Esame e = dao.find(codice);
+        return e;
     }
 
 }
